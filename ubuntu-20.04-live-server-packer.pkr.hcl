@@ -43,12 +43,12 @@ source "vmware-iso" "moiflab-ub01" {
 
 # Remote details eg: how to connect to ESXi
 
-  remote_cache_datastore = var.remote_cache_datastore
-  remote_datastore       = var.remote_datastore
-  remote_host            = var.remote_host
-  remote_password        = var.remote_password
-  remote_type            = var.remote_type
-  remote_username        = var.remote_username
+  remote_cache_datastore = ${var.remote_cache_datastore}
+  remote_datastore       = ${var.remote_datastore}
+  remote_host            = ${var.remote_host}
+  remote_password        = ${var.remote_password}
+  remote_type            = ${var.remote_type}
+  remote_username        = ${var.remote_username}
 
   shutdown_command       = "shutdown -P now"
 
