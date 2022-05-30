@@ -12,6 +12,7 @@
 # executed together and the outcome will be unknown.
 
 
+
 # source blocks are generated from your builders; a source can be referenced in
 # build blocks. A build block runs provisioner and post-processors on a
 # source. Read the documentation for source blocks here:
@@ -39,16 +40,16 @@ source "vmware-iso" "moiflab-ub01" {
 # ISO details
 
   iso_checksum           = "28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad"
-  iso_url                = "[Synology_vmware_esxi] Installers/ubuntu-20.04.1-live-server-amd64.iso"
+  iso_url                = "https://releases.ubuntu.com/focal/ubuntu-20.04.4-live-server-amd64.iso"
 
 # Remote details eg: how to connect to ESXi
 
-  remote_cache_datastore = ${var.remote_cache_datastore}
-  remote_datastore       = ${var.remote_datastore}
-  remote_host            = ${var.remote_host}
-  remote_password        = ${var.remote_password}
-  remote_type            = ${var.remote_type}
-  remote_username        = ${var.remote_username}
+  remote_cache_datastore = "${var.remote_cache_datastore}"
+  remote_datastore       = "${var.remote_datastore}"
+  remote_host            = "${var.remote_host}"
+  remote_password        = "${var.remote_password}"
+  remote_type            = "${var.remote_type}"
+  remote_username        = "${var.remote_username}"
 
   shutdown_command       = "shutdown -P now"
 
