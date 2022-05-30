@@ -1,0 +1,41 @@
+#cloud-config
+autoinstall:
+    version: 1
+    early-commands:
+        # Stop ssh for packer
+        - sudo systemctl stop ssh
+    locale: en_US
+    keyboard:
+        layout: en
+        variant: us
+    identity:
+        hostname: moiflab-ubuntu-server
+        username: moiflab
+        password: '$6$SyKkZuzjvr0uEXk$73Jfwk1dkoO4mbShErm3LhTGyvka/8YcBD/hgt951.hWWsKn3L67R/Qg4wr12mwwDjR8WCR87T.cBLHgcRwla0'
+    network:
+        version: 2
+        ethernets:
+          ens160:
+            dhcp4: true
+            dhcp-identifier: mac
+    ssh:
+        install-server: yes
+        allow-pw: yes
+    storage:
+        layout:
+            name: direct
+    apt:
+        primary:
+            - arches: [i386, amd64]
+              uri: "http://archive.ubuntu.com/ubuntu/"
+    packages:
+      - tree
+    user-data:
+      disable_root: false
+    late-commands:
+      - sed -i -e 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config
+      - sed -i -e 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config
+      - echo 'moiflab ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/moiflab
+      - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/moiflab
+      - curtin in-target --target=/target -- apt-get update
+      - curtin in-target --target=/target -- apt-get upgrade --yes
