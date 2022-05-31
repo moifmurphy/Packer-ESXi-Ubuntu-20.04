@@ -11,12 +11,43 @@
 # and HCL2 calls (for example '${ var.string_value_example }' ). They won't be
 # executed together and the outcome will be unknown.
 
+# Variables - called in the variables.pkvars.hcl file
 
+variable "remote_host" {
+  type        = string
+  description = "The fully qualified domain name or IP address of the ESXi Server instance. (e.g. 'sfo-w01-vc01.sfo.rainpole.io')"
+}
+
+variable "remote_username" {
+  type        = string
+  description = "The username to login to the ESXi Server instance. (e.g. 'svc-packer-vmware@rainpole.io')"
+}
+
+variable "remote_password" {
+  type        = string
+  description = "The password for the login to the ESXi Server instance."
+}
+
+variable "remote_cache_datastore" {
+  type        = string
+  description = "Where to cache the ISOs"
+}
+
+variable "remote_datastore" {
+  type        = string
+  description = "Where to cache the ISOs"
+}
+
+variable "remote_type" {
+  type        = string
+  description = "ESXi version 5"
+}
 
 # source blocks are generated from your builders; a source can be referenced in
 # build blocks. A build block runs provisioner and post-processors on a
 # source. Read the documentation for source blocks here:
 # https://www.packer.io/docs/templates/hcl_templates/blocks/source
+
 source "vmware-iso" "moiflab-ub01" {
 
 # Boot Commands - here, we're starting a local HTTP server on our bootstrap machine to serve the user-data file containing the cloud-init instructions
@@ -39,8 +70,12 @@ source "vmware-iso" "moiflab-ub01" {
 
 # ISO details
 
+  
   iso_checksum           = "28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad"
-  iso_url                = "https://releases.ubuntu.com/focal/ubuntu-20.04.4-live-server-amd64.iso"
+  iso_urls               = [
+    "ubuntu-20.04.4-live-server-amd64.iso",
+    "https://ftp.caliu.cat/pub/distribucions/ubuntu/releases/focal/ubuntu-20.04.4-live-server-amd64.iso"
+  ]
 
 # Remote details eg: how to connect to ESXi
 
@@ -51,7 +86,7 @@ source "vmware-iso" "moiflab-ub01" {
   remote_type            = "${var.remote_type}"
   remote_username        = "${var.remote_username}"
 
-  shutdown_command       = "shutdown -P now"
+  shutdown_command       = "sudo shutdown -P now"
 
 # SSH details once the VM has completed cloud-init
 
@@ -83,6 +118,7 @@ source "vmware-iso" "moiflab-ub01" {
 # a build block invokes sources and runs provisioning steps on them. The
 # documentation for build blocks can be found here:
 # https://www.packer.io/docs/templates/hcl_templates/blocks/build
+
 build {
   sources = ["source.vmware-iso.moiflab-ub01"]
 
