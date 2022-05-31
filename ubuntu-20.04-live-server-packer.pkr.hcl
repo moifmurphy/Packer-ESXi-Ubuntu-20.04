@@ -37,7 +37,7 @@ variable "remote_type" {
 # source. Read the documentation for source blocks here:
 # https://www.packer.io/docs/templates/hcl_templates/blocks/source
 
-source "vmware-iso" "moiflab-ub01" {
+source "vmware-iso" {
 
 # Boot Commands - here, we're starting a local HTTP server on our bootstrap machine to serve the user-data file containing the cloud-init instructions
 
@@ -108,7 +108,7 @@ source "vmware-iso" "moiflab-ub01" {
 # https://www.packer.io/docs/templates/hcl_templates/blocks/build
 
 build {
-  sources = ["source.vmware-iso.moiflab-ub01"]
+  sources = ["source.vmware-iso"]
 
   provisioner "shell" {
     inline = ["ls /"]
