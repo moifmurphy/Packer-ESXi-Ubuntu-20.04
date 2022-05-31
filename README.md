@@ -11,7 +11,8 @@ These scripts will enable you to deploy an Ubuntu 20.04 VM on ESXi 7.0 and up.
 We're making use of the vnc_over_websocket feature which was added on the back of vnc being removed from ESXi 7.0: 
 
 William Lams [blog entry](https://williamlam.com/2020/10/quick-tip-vmware-iso-builder-for-packer-now-supported-with-esxi-7-0.html)
-Github PR raised on the back of [VNC being removed from ESXi 7.0](https://github.com/hashicorp/packer/issues/8984)
+
+The Github PR raised on the back of [VNC being removed from ESXi 7.0](https://github.com/hashicorp/packer/issues/8984)
 
 This eliminates the need to mess around with the services.xml - believe me, that was a rabbit hole I thought I'd never get out of.
 
