@@ -1,6 +1,6 @@
 # Packer ESXi Ubuntu 20.04
 
-I am in the process of skilling up and along the way, I am documenting the steps with a view to hopefully, helping someone else out.
+I am in the process of skilling up and along the way, I am documenting the steps with a view to hopefully helping someone else out.
 
 With that in mind, this repository is a work in progress and I welcome comments on how to improve the build files.
 
