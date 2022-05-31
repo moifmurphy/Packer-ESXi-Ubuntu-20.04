@@ -9,9 +9,9 @@ autoinstall:
         layout: en
         variant: us
     identity:
-        hostname: moiflab-ubuntu-server
-        username: moiflab
-        password: '$6$SyKkZuzjvr0uEXk$73Jfwk1dkoO4mbShErm3LhTGyvka/8YcBD/hgt951.hWWsKn3L67R/Qg4wr12mwwDjR8WCR87T.cBLHgcRwla0'
+        hostname: CHANGEME
+        username: CHANGEME
+        password: CHANGEME
     network:
         version: 2
         ethernets:
@@ -35,7 +35,7 @@ autoinstall:
     late-commands:
       - sed -i -e 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config
       - sed -i -e 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config
-      - echo 'moiflab ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/moiflab
-      - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/moiflab
+      - echo 'CHANGEME ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/CHANGEME
+      - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/CHANGEME
       - curtin in-target --target=/target -- apt-get update
       - curtin in-target --target=/target -- apt-get upgrade --yes
