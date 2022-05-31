@@ -1,8 +1,10 @@
 # Packer ESXi Ubuntu 20.04
 
-I am in the process of skilling up and this repository is a work in progress. 
+I am in the process of skilling up and along the way, I am documenting the steps with a view to hopefully, helping someone else out.
 
-Along the way, I am documenting the steps with a view to hopefully, helping someone else out. There are many blogs on how to deploy a VM to vCenter, but not many on deploying straight to ESXi 7.0.
+With that in mind, this repository is a work in progress and I welcome comments on how to improve the build files.
+
+There are many blogs on how to deploy a VM to vCenter, but not many on deploying straight to ESXi 7.0.
 
 These scripts will enable you to deploy an Ubuntu 20.04 VM on ESXi 7.0 and up.
 
