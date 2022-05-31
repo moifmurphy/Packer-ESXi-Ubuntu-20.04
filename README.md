@@ -1,4 +1,4 @@
-# Deploy an Ubuntu 20.04 Live Server VM to an ESXi 7.0 standalone host
+# Deploy an Ubuntu 20.04 Live Server VM to an ESXi 7.0 standalone host with Packer
 
 I am in the process of skilling up and along the way, I am documenting the steps with a view to hopefully helping someone else out.
 
