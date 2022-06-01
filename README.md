@@ -14,15 +14,15 @@ William Lams [blog entry](https://williamlam.com/2020/10/quick-tip-vmware-iso-bu
 
 The Github PR raised on the back of [VNC being removed from ESXi 7.0](https://github.com/hashicorp/packer/issues/8984)
 
-This eliminates the need to mess around with the services.xml - believe me, that was a rabbit hole I thought I'd never get out of.
+This eliminates the need to mess around with the ESXi Firewall services.xml - believe me, that was a rabbit hole I thought I'd never get out of.
 
 In the hcl and user-data files, you’ll find the string: CHANGEME - change this to match your requirements.
 
 The password hash needed for the user account in the user-data file is generated with:
 
-‘’’
+```
 mkpasswd —method=SHA-512 —rounds=4096
-‘’’
+```
 
 
 Proof of build (Windows):
